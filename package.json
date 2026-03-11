@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "powershell -ExecutionPolicy Bypass -File ./Scripts/with-msvc-env.ps1 ./node_modules/.bin/tauri.cmd",
+    "tauri": "powershell -ExecutionPolicy Bypass -File ./Scripts/with-msvc-env.ps1 .\\node_modules\\.bin\\tauri.cmd",
     "tauri:dev": "npm run tauri -- dev",
     "tauri:build": "npm run tauri -- build",
     "format": "prettier --write . && cd src-tauri && cargo fmt",
