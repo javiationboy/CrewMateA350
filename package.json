@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri",
+    "tauri": "powershell -ExecutionPolicy Bypass -File ./Scripts/with-msvc-env.ps1 ./node_modules/.bin/tauri.cmd",
+    "tauri:dev": "npm run tauri -- dev",
+    "tauri:build": "npm run tauri -- build",
     "format": "prettier --write . && cd src-tauri && cargo fmt",
     "format:check": "prettier --check . && cd src-tauri && cargo fmt -- --check",
     "format:frontend": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
@@ -15,7 +17,8 @@
     "lint": "npm run lint:frontend && npm run lint:backend",
     "lint:frontend": "eslint .",
     "lint:frontend:fix": "eslint . --fix",
-    "lint:backend": "cd src-tauri && cargo clippy --all-targets --all-features -- -D warnings",
+    "lint:backend": "powershell -ExecutionPolicy Bypass -File ./Scripts/with-msvc-env.ps1 -CommandLine \"cargo clippy --manifest-path ./src-tauri/Cargo.toml --all-targets --all-features -- -D warnings\"",
+    "cargo:check": "powershell -ExecutionPolicy Bypass -File ./Scripts/with-msvc-env.ps1 cargo check --manifest-path ./src-tauri/Cargo.toml",
     "check": "npm run format:check && npm run lint"
   },
   "dependencies": {

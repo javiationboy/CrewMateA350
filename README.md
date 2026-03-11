@@ -32,6 +32,22 @@
 
 - Microsoft Flight Simulator 2020 or 2024
 - Inibuilds A350
+- MSFS SDK installed at `C:\MSFS SDK` or available through the `MSFS_SDK` environment variable
+- Visual Studio Build Tools with the MSVC C++ toolset and a Windows SDK
+
+## Development Notes
+
+Rust/Tauri commands that touch `src-tauri` should be run through the npm scripts in `package.json`. The `tauri` and `cargo:check` scripts load the Visual Studio build environment before `bindgen` builds `msfs-rs`, which avoids the common Windows header errors:
+
+- `'float.h' file not found`
+- `'vcruntime.h' file not found`
+
+Examples:
+
+```powershell
+npm run tauri:dev
+npm run cargo:check
+```
 
 ## Voice Commands (Examples)
 

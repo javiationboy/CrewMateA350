@@ -18,6 +18,8 @@ Prerequisites
 - Node.js (LTS recommended) and npm
 - Tauri (see https://v2.tauri.app/start/)
 - .NET SDK to build `CopilotSpeech` if you need to modify it
+- MSFS SDK installed at `C:\MSFS SDK` or configured via the `MSFS_SDK` environment variable
+- Visual Studio Build Tools with the MSVC C++ toolset and Windows SDK headers
 
 Basic setup
 
@@ -30,13 +32,15 @@ npm install
 Run the app in development
 
 ```bash
-npm run tauri dev
+npm run tauri:dev
 ```
+
+The `npm run tauri -- ...` and `npm run cargo:check` entrypoints load the Visual Studio developer environment before running Cargo. Use those wrappers on Windows if `bindgen` reports missing headers such as `float.h` or `vcruntime.h`.
 
 Build a packaged app
 
 ```bash
-npm run tauri build
+npm run tauri:build
 ```
 
 Build/Publish SideCar
